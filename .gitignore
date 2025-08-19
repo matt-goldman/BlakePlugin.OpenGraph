@@ -11,6 +11,9 @@
 *.sln.docstates
 *.env
 
+# Local .NET SDK installations
+dotnet/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
