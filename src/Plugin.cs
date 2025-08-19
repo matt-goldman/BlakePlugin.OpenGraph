@@ -53,7 +53,7 @@ public partial class Plugin : IBlakePlugin
                 continue;
             }
 
-            var metaTags = GenerateMetaTags(page, baseUrl);
+            var metaTags = GenerateMetaTags(page, baseUrl, logger);
             
             // Insert meta tags into the head section of the index.html file
             var localIndexContent = blankIndexContent
@@ -92,7 +92,7 @@ public partial class Plugin : IBlakePlugin
         return config;
     }
 
-    private static string GenerateMetaTags(GeneratedPage page, string baseUrl)
+    private static string GenerateMetaTags(GeneratedPage page, string baseUrl, ILogger? logger)
     {
         static string esc(string s) => System.Net.WebUtility.HtmlEncode(s);
         var metaTags = new List<string>
@@ -108,6 +108,10 @@ public partial class Plugin : IBlakePlugin
 
         if (!string.IsNullOrEmpty(page.Page.Image))
         {
+            logger?.LogDebug("OpenGraph: Adding image meta tag for {Slug}", page.Page.Slug);
+            logger?.LogDebug("Base URL: {baseUrl}", baseUrl);
+            logger?.LogDebug("Page Image: {Image}", page.Page.Image);
+            logger?.LogDebug("OpenGraph: Image URL: {url}", $"{baseUrl.TrimEnd('/')}/{page.Page.Image.TrimStart('/')}");
             metaTags.Add($"<meta property=\"og:image\" content=\"{baseUrl.TrimEnd('/')}/{page.Page.Image.TrimStart('/')}\" />");
         }
 
