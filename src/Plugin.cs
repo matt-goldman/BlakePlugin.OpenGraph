@@ -54,7 +54,7 @@ public partial class Plugin : IBlakePlugin
             }
 
             var metaTags = GenerateMetaTags(page, baseUrl);
-
+            
             // Insert meta tags into the head section of the index.html file
             var localIndexContent = blankIndexContent
                 .Replace("<base href=\"/\" />", $"<base href=\"{baseUrl.TrimEnd('/')}/\" />")
@@ -131,19 +131,19 @@ public partial class Plugin : IBlakePlugin
         };
 
         foreach (var r in rx) html = r.Replace(html, "");
-
+        
         return html;
     }
 
     [GeneratedRegex("""<meta\s+[^>]*\bproperty\s*=\s*['""]og:[^'""]+['"'][^>]*>""", RegexOptions.IgnoreCase | RegexOptions.Singleline, "en-AU")]
     private static partial Regex MetaOGRegex();
-
+    
     [GeneratedRegex("""<meta\s+[^>]*\bname\s*=\s*['""]twitter:[^'""]+['"'][^>]*>""", RegexOptions.IgnoreCase | RegexOptions.Singleline, "en-AU")]
     private static partial Regex MetaTWRegex();
-
+    
     [GeneratedRegex("""<meta\s+[^>]*\bname\s*=\s*['""]description['""][^>]*>""", RegexOptions.IgnoreCase | RegexOptions.Singleline, "en-AU")]
     private static partial Regex MetaNameRegex();
-
+    
     [GeneratedRegex("""<link\s+[^>]*\brel\s*=\s*['""]canonical['""][^>]*>""", RegexOptions.IgnoreCase | RegexOptions.Singleline, "en-AU")]
     private static partial Regex MetaCanonicalRegex();
 

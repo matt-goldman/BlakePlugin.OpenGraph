@@ -4,6 +4,16 @@ BlakePlugin.OpenGraph is a C# .NET 9.0 plugin for the Blake static site generato
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
+## Maintaining These Instructions
+
+**ALWAYS** update these instructions with new, relevant information as required when:
+- New development patterns or workflows are discovered
+- Dependencies, build requirements, or tooling changes
+- New troubleshooting scenarios are encountered
+- Additional validation or testing procedures are needed
+
+Keep these instructions comprehensive and up-to-date to maintain effectiveness for future development work.
+
 ## Working Effectively
 
 ### Install .NET 9.0 SDK (REQUIRED)
@@ -61,6 +71,8 @@ dotnet format --verify-no-changes
 ```
 
 The formatting check MUST pass (exit code 0) before any code changes are committed.
+
+**Important**: Do NOT include formatting-only changes in commits unless explicitly requested. Only commit formatting changes when they are part of functional code changes or when specifically asked to fix formatting issues.
 
 ### Build Validation
 ALWAYS run full build validation after making changes:
